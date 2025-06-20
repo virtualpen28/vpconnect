@@ -1,8 +1,10 @@
 version: 1.0
 runtime: docker
-image_repository:
-  image_identifier: <your-AWS-Account-ID>.dkr.ecr.<region>.amazonaws.com/vpconnect-app:latest
-  image_repository_type: ECR
-  runtime_environment_variables:
-    NODE_ENV: production
-  port: 5000
+build:
+  dockerfile_path: Dockerfile
+run:
+  network:
+    port: 5000
+  env:
+    - name: NODE_ENV
+      value: production
