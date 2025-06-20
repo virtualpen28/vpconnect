@@ -16,7 +16,6 @@ run:
   command: NODE_ENV=production node dist/index.js
   network:
     port: 5000
-
-env:
-  - name: NODE_ENV
-    value: production
+  env:
+    - name: NODE_ENV
+      value: production
