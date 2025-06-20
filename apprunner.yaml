@@ -3,9 +3,13 @@ runtime: nodejs18
 
 build:
   commands:
+    pre-build:
+      - echo "Installing dependencies…"
+      - npm ci
     build:
-      - npm install
-      - npm run build
+      - echo "Building app with Vite and Esbuild…"
+      - vite build
+      - npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
 
 run:
   runtime-version: 18.20.8
