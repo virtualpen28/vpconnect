@@ -5,11 +5,12 @@ build:
   env:
     - name: NPM_CONFIG_PRODUCTION
       value: "false"
-  commands:
-    - echo "Installing all dependencies including devDependencies..."
-    - npm install
-    - echo "Running build command..."
-    - npm run build
+  build:
+    commands:
+      - echo "Installing all dependencies including devDependencies..."
+      - npm install
+      - echo "Running build command..."
+      - npm run build
 
 run:
   runtime-version: 18.20.8
