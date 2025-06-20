@@ -1,5 +1,6 @@
 version: 1.0
 runtime: nodejs18
+
 build:
   commands:
     pre-build:
@@ -8,11 +9,11 @@ build:
     build:
       - echo "Building app…"
       - npm run build
+
 run:
-  runtime-version: 18.20.8
   command: npm start
   network:
     port: 5000
-env:
-  - name: NODE_ENV
-    value: production
+  env:
+    - name: NODE_ENV
+      value: production
