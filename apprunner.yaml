@@ -1,22 +1,8 @@
 version: 1.0
-runtime: nodejs18
-
-build:
-  commands:
-    build:
-      - echo "Installing all dependencies including devDependencies..."
-      - npm install
-      - echo "Running build command..."
-      - npm run build
-  env:
-    - name: NPM_CONFIG_PRODUCTION
-      value: "false"
-
-run:
-  runtime-version: 18.20.8
-  command: npm start
-  network:
-    port: 5000
-  env:
-    - name: NODE_ENV
-      value: production
+runtime: docker
+image_repository:
+  image_identifier: <your-AWS-Account-ID>.dkr.ecr.<region>.amazonaws.com/vpconnect-app:latest
+  image_repository_type: ECR
+  runtime_environment_variables:
+    NODE_ENV: production
+  port: 5000
