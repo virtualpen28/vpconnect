@@ -4,11 +4,8 @@ runtime: nodejs18
 build:
   commands:
     pre-build:
-      - echo "Installing dependencies…"
+      - echo "Installing dependencies..."
       - npm ci
-    build:
-      - echo "Building app…"
-      - npm run build
 
 run:
   command: npm start
