@@ -2,18 +2,18 @@ version: 1.0
 runtime: nodejs18
 
 build:
+  env:
+    - name: NPM_CONFIG_PRODUCTION
+      value: "false"
   commands:
-    pre-build:
-      - echo "Installing dependencies…"
-      - npm ci
-    build:
-      - echo "Building app with Vite and Esbuild…"
-      - vite build
-      - npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+    - echo "Installing all dependencies including devDependencies..."
+    - npm install
+    - echo "Running build command..."
+    - npm run build
 
 run:
   runtime-version: 18.20.8
-  command: node dist/index.js
+  command: npm start
   network:
     port: 5000
   env:
