@@ -1,0 +1,21 @@
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    build:
+      - echo "Installing dependencies for VPConnect..."
+      - npm ci
+      - echo "Building VPConnect application..."
+      - npm run build
+      - echo "Build completed successfully"
+  env:
+    - name: NODE_ENV
+      value: production
+run:
+  runtime-version: 18
+  command: npm start
+  network:
+    port: 5000
+  env:
+    - name: NODE_ENV
+      value: production
