@@ -4,13 +4,19 @@ runtime: nodejs18
 build:
   commands:
     pre-build:
-      - echo "Installing dependencies..."
+      - echo "Installing dependencies…"
       - npm ci
+    build:
+      - echo "Building app…"
+      - vite build
+      - npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
 
 run:
-  command: npm start
+  runtime-version: 18.20.8
+  command: NODE_ENV=production node dist/index.js
   network:
     port: 5000
-  env:
-    - name: NODE_ENV
-      value: production
+
+env:
+  - name: NODE_ENV
+    value: production
